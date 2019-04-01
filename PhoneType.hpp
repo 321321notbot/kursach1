@@ -4,7 +4,7 @@
 
 namespace std{
 
-	class PhoneType{//типы телефонов
+	class PhoneType{//type telephone
 	protected:
 		bool isGPS;
 		bool is4G;
@@ -33,7 +33,7 @@ namespace std{
 		string& TypeName(){ return typeName;}
 		string& Creator(){ return creator;}
 		string& ConnectionType(){ return connectionType;}
-		//вывод в поток вывода
+		//vivod v potok vivoda
 		void print (ostream& out){
 			out << "["<< typeName << "]" <<
 				   "\nGPS: " << boolalpha << isGPS <<
@@ -51,7 +51,7 @@ namespace std{
 		}
 	};
 	
-	//смартфон
+	//smart
 	class Smartphone: public PhoneType{
 	public:
 		Smartphone(){
@@ -71,7 +71,7 @@ namespace std{
 		}
 	};
 
-	//домашний
+	//home
 	class HomePhone: public PhoneType{
 	public:
 		HomePhone(){
@@ -91,7 +91,7 @@ namespace std{
 		}
 	};
 
-	//спутниковый
+	//SattelitPhone
 	class SattelitPhone: public PhoneType{
 	public:
 		SattelitPhone(){

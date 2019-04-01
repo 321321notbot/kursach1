@@ -2,7 +2,7 @@
 #include "PhoneType.hpp"
 using namespace std;
 
-class Phone {//телефон, реализован паттерн Singletone
+class Phone {//pattern Singletone
 private:
 	PhoneType *pt;
     Phone(PhoneType* type):pt(type) {}
