@@ -39,8 +39,8 @@ public:
     int getmemory() const;
 	void setmemory(int memory);
 
-	int getsize() const;
-	void setsize(int sizeScreen);
+	int getsizeScreen() const;
+	void setsizeScreen(int sizeScreen);
 
 	bool getisgps() const;
 	void setisgps(bool isgps);
@@ -57,8 +57,8 @@ public:
 	const string &getColor() const;
 	void setColor(const string &color);
 
-	const string &getTypeC() const;
-	void setTypeC(const string &typeConnection);
+	const string &gettypeConnection() const;
+	void settypeConnection(const string &typeConnection);
 
 	const string &getwifi() const;
 	void setwifi(const string &wifi);
