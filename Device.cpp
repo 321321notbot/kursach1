@@ -12,11 +12,11 @@ void Device::setproducer(const string &producer) {
     Device::producer = producer;
 }
 
-const string &Device::getTypeC() const {
+const string &Device::gettypeConnection() const {
 	return typeConnection;
 }
 
-void Device::setTypeC(const string &typeConnection) {
+void Device::settypeConnection(const string &typeConnection) {
 	Device::typeConnection = typeConnection;
 }
 
@@ -28,11 +28,11 @@ int Device::getmemory() const {
 void Device::setmemory(int memory) {
     Device::memory = memory;
 }
-int Device::getsize() const {
+int Device::getsizeScreen() const {
 	return sizeScreen;
 }
 
-void Device::setsize(int sizeScreen) {
+void Device::setsizeScreen(int sizeScreen) {
 	Device::sizeScreen = sizeScreen;
 }
 bool Device::getisgps() const {
@@ -115,19 +115,20 @@ Device::~Device() {
 
 
 Device::Device(const string &producer, int memory, bool isgps,bool is4g, const string &color,const string &screen,int year,bool isSensore,bool isKeyBoard,const string &wifi,int sizeScreen,const string &typeConnection)
-        : producer(producer), memory(memory), isgps(isgps), is4g(is4g), color(color), screen(screen),year(year),isSensore(isSensore),sizeScreen(sizeScreen), typeConnection(typeConnection),
-	isKeyBoard(isKeyBoard),wifi(wifi){}
+        : producer(producer), memory(memory), isgps(isgps), is4g(is4g), color(color), screen(screen),year(year),isSensore(isSensore), isKeyBoard(isKeyBoard), wifi(wifi),
+	sizeScreen(sizeScreen), typeConnection(typeConnection){}
 
 ostream &operator<<(ostream &os, const Device &device) {
     os << "izgotovitel': " << device.producer << " memory: " << device.memory <<" isGps?: " << device.isgps << " is4G?: " << device.is4g 
-		<< " color: " << device.color << " screen: " << device.screen << " year: " << device.year << " type Connection: " << device.typeConnection
-		<< " is Sensore?: " << device.isSensore << " is KeyBoard?: " << device.isKeyBoard << " type wifi connection?: " << device.wifi << " size Screen: " << device.sizeScreen;
+		<< " color: " << device.color << " screen: " << device.screen << " year: " << device.year
+		<< " is Sensore?: " << device.isSensore << " is KeyBoard?: " << device.isKeyBoard << " type wifi connection?: " << device.wifi << " size Screen: " 
+		<< device.sizeScreen << " type Connection: " << device.typeConnection;
     return os;
 }
 
 void Device::writeToFile(ostream &file) {
-    file << producer << endl << memory << endl <<isgps<< endl << is4g << endl << color << endl<<screen<<endl<<year<<endl<< isSensore<<endl
-		<< isKeyBoard<<endl<<wifi<<endl<<sizeScreen<<endl<<typeConnection<<endl;
+	file << producer << endl << memory << endl << isgps << endl << is4g << endl << color << endl << screen << endl << year << endl << isSensore << endl
+		<< isKeyBoard << endl << wifi << endl << sizeScreen << endl << typeConnection << endl;
 }
 
 void Device::readFromFile(istream &file) {
@@ -143,28 +144,30 @@ void Device::readFromFile(istream &file) {
     file >> color;
 	string screen;
 	file >> screen;
-	string wifi;
-	file >> wifi;
-	string typeConnection;
-	file >> typeConnection;
 	int year;
 	file >> year;
-	int sizeScreen;
-	file >> sizeScreen;
 	bool isSensore;
 	file >> isSensore;
 	bool isKeyBoard;
 	file >> isKeyBoard;
+	string wifi;
+	file >> wifi;
+	int sizeScreen;
+	file >> sizeScreen;
+	string typeConnection;
+	file >> typeConnection;
     this->producer = producer;
     this->memory = memory;
-    this->color = color;
 	this->isgps = isgps;
 	this->is4g = is4g;
+    this->color = color;
 	this->screen = screen;
 	this->year = year;
 	this->isSensore = isSensore;
 	this->isKeyBoard = isKeyBoard;
 	this->wifi = wifi;
+	this->sizeScreen;
+	this->typeConnection;
 }
 
 istream &operator>>(istream &in, Device &device) {
@@ -204,6 +207,7 @@ istream &operator>>(istream &in, Device &device) {
 	cout << "type soedinenia" << endl;
 	string typeConnection;
 	in >> typeConnection;
+
     device.producer = producer;
     device.memory = memory;
 	device.isgps = isgps;
@@ -214,8 +218,8 @@ istream &operator>>(istream &in, Device &device) {
 	device.isSensore = isSensore;
 	device.isKeyBoard = isKeyBoard;
 	device.wifi = wifi;
-	device.sizeScreen;
-	device.typeConnection;
+	device.sizeScreen=sizeScreen;
+	device.typeConnection=typeConnection;
     return in;
 }
 
